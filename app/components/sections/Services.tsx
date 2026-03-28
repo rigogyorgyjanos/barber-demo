@@ -32,17 +32,20 @@ export default function Services() {
                         key={service.id}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        // whileHover={{  border: "1px solid #FFD700" }} // itt a bg-accent hex kódja
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: index * 0.15 }}
-                        className="flex justify-between items-center bg-secondary p-6 rounded-lg shadow-lg hover:bg-accent hover:text-black transition-colors cursor-pointer"
+                        transition={{ duration: 0.3 }}
+                        className="flex justify-between items-center bg-secondary p-6 rounded-lg shadow-lg cursor-pointer  group  hover:border-[#725923] hover:border-[1px] "
                     >
                         <div>
-                            <h3 className="font-heading text-xl uppercase tracking-wider">
+                            <h3 className="font-heading text-xl uppercase tracking-wider group-hover:text-black transition-colors">
                                 {service.name}
                             </h3>
-                            <p className="text-muted mt-1">{service.duration}</p>
+                            <p className="text-muted mt-1 group-hover:text-black transition-colors">
+                                {service.duration}
+                            </p>
                         </div>
-                        <div className="font-heading text-lg tracking-wide">
+                        <div className="font-heading text-lg tracking-wide group-hover:text-[#725923] transition-colors">
                             {service.price}
                         </div>
                     </motion.div>

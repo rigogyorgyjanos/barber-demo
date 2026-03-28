@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Button from "../ui/Button";
+import { UseScrollOptions } from "framer-motion";
+import { useSmoothScroll } from "@/app/hook/useSmoothScroll";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const scrollTo = useSmoothScroll()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,18 +32,32 @@ export default function Navbar() {
 
                 {/* Logo */}
                 <div className="font-heading text-xl tracking-widest uppercase">
-                    Barber
+                    <a
+                        onClick={() => scrollTo("#top")}
+                        className="cursor-pointer"
+                    >
+                        Barber
+                    </a>
                 </div>
 
                 {/* Nav items */}
-                <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider">
-                    <a href="#barbers" className="hover:text-accent transition">
+                <div className="hidden md:flex items-center gap-8 Fext-sm uppercase tracking-wider">
+                    <a
+                        onClick={() => scrollTo("#barbers")}
+                        className="hover:text-accent transition tracking-widest cursor-pointer"
+                    >
                         Barbers
                     </a>
-                    <a href="#services" className="hover:text-accent transition">
+                    <a
+                        onClick={() => scrollTo("#services")}
+                        className="hover:text-accent transition tracking-widest cursor-pointer"
+                    >
                         Services
                     </a>
-                    <a href="#gallery" className="hover:text-accent transition">
+                    <a
+                        onClick={() => scrollTo("#gallery")}
+                        className="hover:text-accent transition tracking-widest cursor-pointer"
+                    >
                         Gallery
                     </a>
                 </div>
