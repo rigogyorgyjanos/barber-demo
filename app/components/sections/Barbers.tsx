@@ -62,11 +62,13 @@ export default function Barbers() {
 
                                         `}
                         >
-                            <img
+                            <motion.img
                                 src={barber.image}
                                 alt={barber.name}
                                 loading="lazy"
-                                className="w-72 md:w-80 lg:w-96 h-96 object-cover transition-transform duration-500 group-hover:scale-105"
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.4 }}
+                                className="w-72 md:w-80 lg:w-96 h-96 object-cover  "
                             />
                             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-center px-4">
                                 <h3 className="text-xl font-heading uppercase tracking-wider text-accent mb-2">
@@ -92,14 +94,14 @@ export default function Barbers() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
+                                className="relative group h-96 cursor-pointer overflow-hidden rounded-lg shadow-lg"
                             >
                                 <img
                                     src={barber.image}
                                     alt={barber.name}
-                                    className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="w-full  object-cover transition-transform duration-500 "
                                 />
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-center px-4">
+                                <div className="absolute inset-0 bg-black/50  transition duration-500 flex flex-col items-center justify-center text-center px-4">
                                     <h3 className="text-xl font-heading uppercase tracking-wider text-accent mb-2">
                                         {barber.name}
                                     </h3>

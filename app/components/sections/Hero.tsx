@@ -25,10 +25,19 @@ export default function Hero() {
                 <p className="text-muted mb-8 max-w-xl mx-auto">
                     Premium grooming experience tailored to perfection.
                 </p>
-
-                <Button href="https://salonic.hu/">
-                    Book Appointment
-                </Button>
+                <div className="mt-15">
+                    <Button href="https://salonic.hu/">
+                        Book Appointment
+                    </Button>
+                    <div className="m-10 flex items-center gap-4 px-6">
+                        <div className="flex-1 h-px bg-white/30" />
+                        <span className="text-sm uppercase tracking-widest ">or</span>
+                        <div className="flex-1 h-px bg-white/30" />
+                    </div>
+                    <Button className="text-[#725923]" href="tel:+3612345678" >
+                        Call Us now
+                    </Button>
+                </div>
             </motion.div>
         </section>
     );

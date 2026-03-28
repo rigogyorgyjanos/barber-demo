@@ -62,13 +62,6 @@ button {
   background-color: #C6A96B;
 }
 
-/* Smooth image scaling for hover effects */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
 
 /* Scrollbar subtle (luxury feel) */
 ::-webkit-scrollbar {

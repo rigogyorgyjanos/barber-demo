@@ -2,14 +2,24 @@
 
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import Button from "../ui/Button";
-import { UseScrollOptions } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { useSmoothScroll } from "@/app/hook/useSmoothScroll";
+import Button from "../ui/Button";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
-    const scrollTo = useSmoothScroll()
+    const [menuOpen, setMenuOpen] = useState(false);
+    const scrollTo = useSmoothScroll();
 
+    const navItems = [
+        { label: "Barbers", id: "#barbers" },
+        { label: "Services", id: "#services" },
+        { label: "Gallery", id: "#gallery" },
+        { label: "Contact", id: "#contact" },
+    ];
+
+    // Navbar background scroll effect
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
@@ -19,54 +29,120 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    return (
-        <nav
-            className={clsx(
-                "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-                scrolled
-                    ? "bg-black/70 backdrop-blur-md border-b border-white/10"
-                    : "bg-transparent"
-            )}
-        >
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    // Body scroll lock
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
 
-                {/* Logo */}
-                <div className="font-heading text-xl tracking-widest uppercase">
-                    <a
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [menuOpen]);
+
+    return (
+        <>
+            {/* NAVBAR */}
+            <nav
+                className={clsx(
+                    "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+                    scrolled
+                        ? "bg-black/70 backdrop-blur-md border-b border-white/10"
+                        : "bg-transparent"
+                )}
+            >
+                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+                    {/* Logo */}
+                    <div
                         onClick={() => scrollTo("#top")}
-                        className="cursor-pointer"
+                        className="font-heading text-xl tracking-widest uppercase cursor-pointer"
                     >
                         Barber
-                    </a>
-                </div>
+                    </div>
 
-                {/* Nav items */}
-                <div className="hidden md:flex items-center gap-8 Fext-sm uppercase tracking-wider">
-                    <a
-                        onClick={() => scrollTo("#barbers")}
-                        className="hover:text-accent transition tracking-widest cursor-pointer"
-                    >
-                        Barbers
-                    </a>
-                    <a
-                        onClick={() => scrollTo("#services")}
-                        className="hover:text-accent transition tracking-widest cursor-pointer"
-                    >
-                        Services
-                    </a>
-                    <a
-                        onClick={() => scrollTo("#gallery")}
-                        className="hover:text-accent transition tracking-widest cursor-pointer"
-                    >
-                        Gallery
-                    </a>
-                </div>
+                    {/* Desktop nav */}
+                    <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.id}
+                                onClick={() => scrollTo(item.id)}
+                                className="hover:text-accent transition"
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
 
-                {/* CTA */}
-                <Button href="https://salonic.hu/" className="hidden md:block">
-                    Book Now
-                </Button>
-            </div>
-        </nav>
+                    {/* Desktop CTA */}
+                    <div className="hidden md:block">
+                        <Button href="https://salonic.hu/">
+                            Book Now
+                        </Button>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        onClick={() => setMenuOpen(true)}
+                        className="md:hidden z-60"
+                    >
+                        <HiOutlineMenu size={28} />
+                    </button>
+                </div>
+            </nav>
+
+            {/* MOBILE MENU */}
+            <AnimatePresence>
+                {menuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="fixed inset-0 backdrop-blur-2xl z-50 flex flex-col justify-between px-8 py-24 text-2xl uppercase tracking-widest"
+                    >
+                        {/* Close button */}
+                        <button
+                            onClick={() => setMenuOpen(false)}
+                            className="absolute top-6 right-6"
+                        >
+                            <HiOutlineX size={32} />
+                        </button>
+
+                        {/* Menu items */}
+                        <div className="flex flex-col gap-8 items-start">
+                            {navItems.map((item, i) => (
+                                <motion.a
+                                    key={item.id}
+                                    onClick={() => {
+                                        scrollTo(item.id);
+                                        setMenuOpen(false);
+                                    }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="hover:text-accent text-left"
+                                >
+                                    {item.label}
+                                </motion.a>
+                            ))}
+                        </div>
+
+                        {/* Bottom CTA */}
+                        <motion.a
+                            href="https://salonic.hu/"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="border px-6 py-3 w-fit mx-auto"
+                        >
+                            Book Now
+                        </motion.a>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }

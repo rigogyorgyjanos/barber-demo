@@ -31,11 +31,15 @@ export default function Gallery() {
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                         className="break-inside-avoid overflow-hidden rounded-lg cursor-pointer group"
                     >
-                        <img
+                        <motion.img
                             src={src}
                             alt={`Gallery ${index + 1}`}
                             loading="lazy"
-                            className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full h-auto object-cover grayscale group-hover:grayscale-0"
+
+                        // className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                         />
                     </motion.div>
                 ))}
