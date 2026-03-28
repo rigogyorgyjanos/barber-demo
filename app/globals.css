@@ -1,26 +1,85 @@
 @import "tailwindcss";
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* --- Base Styles --- */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0B0B0B;
+  /* primary dark */
+  color: #EDEDED;
+  /* text color */
+  line-height: 1.6;
+}
+
+/* Headings - luxury feel */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', sans-serif;
+  color: #EDEDED;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #C6A96B;
+  /* accent color */
+}
+
+/* Buttons reset */
+button {
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
+
+/* Utility classes tweaks */
+.text-muted {
+  color: #A1A1A1;
+}
+
+.bg-primary {
+  background-color: #0B0B0B;
+}
+
+.bg-secondary {
+  background-color: #1A1A1A;
+}
+
+.bg-accent {
+  background-color: #C6A96B;
+}
+
+/* Smooth image scaling for hover effects */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Scrollbar subtle (luxury feel) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #725923;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0B;
 }
