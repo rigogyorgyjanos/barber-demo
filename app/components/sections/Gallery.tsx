@@ -34,6 +34,7 @@ export default function Gallery() {
                         <img
                             src={src}
                             alt={`Gallery ${index + 1}`}
+                            loading="lazy"
                             className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                         />
                     </motion.div>
@@ -55,6 +56,7 @@ export default function Gallery() {
                                 <img
                                     src={src}
                                     alt={`Gallery ${index + 1}`}
+                                    loading="lazy"
                                     className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                                 />
                             </motion.div>

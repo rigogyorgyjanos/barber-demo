@@ -65,6 +65,7 @@ export default function Barbers() {
                             <img
                                 src={barber.image}
                                 alt={barber.name}
+                                loading="lazy"
                                 className="w-72 md:w-80 lg:w-96 h-96 object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-center px-4">
