@@ -47,10 +47,10 @@ export default function Navbar() {
             {/* NAVBAR */}
             <nav
                 className={clsx(
-                    "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+                    "fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] border",
                     scrolled
-                        ? "bg-black/70 backdrop-blur-md border-b border-white/10"
-                        : "bg-transparent"
+                        ? "top-4 w-[95%] max-w-5xl bg-black/30 backdrop-blur-xl border-white/10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+                        : "top-0 w-full max-w-none bg-black/0 backdrop-blur-md border-white/0 rounded-none shadow-none"
                 )}
             >
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
