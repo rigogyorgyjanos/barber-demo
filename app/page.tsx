@@ -3,6 +3,7 @@ import Barbers from "./components/sections/Barbers";
 import Services from "./components/sections/Services";
 import Gallery from "./components/sections/Gallery";
 import CTA from "./components/sections/CTA";
+import Map from "./components/sections/Map"
 import Footer from "./components/sections/Footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Services />
       <Gallery />
       <CTA />
+      <Map />
       <Footer />
     </main>
   );

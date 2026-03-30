@@ -64,7 +64,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Desktop nav */}
-                    <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider">
+                    <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider cursor-pointer">
                         {navItems.map((item) => (
                             <a
                                 key={item.id}

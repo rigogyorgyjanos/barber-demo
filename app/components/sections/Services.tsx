@@ -20,7 +20,7 @@ export default function Services() {
     return (
         <section
             id="services"
-            className="max-w-7xl mx-auto px-6 py-24"
+            className="max-w-7xl mx-auto px-6 py-24 bg-neutral-900"
         >
             <h2 className="text-3xl md:text-4xl font-heading uppercase tracking-widest mb-12 text-center">
                 Our Services
@@ -35,7 +35,7 @@ export default function Services() {
                         // whileHover={{  border: "1px solid #FFD700" }} // itt a bg-accent hex kódja
                         viewport={{ once: true }}
                         transition={{ duration: 0.3 }}
-                        className="flex justify-between items-center bg-secondary p-6 rounded-lg shadow-lg cursor-pointer  group  hover:border-[#725923] hover:border "
+                        className="flex justify-between items-center bg-neutral-950 p-6 rounded-lg shadow-lg cursor-pointer  group  hover:border-[#725923] hover:border "
                     >
                         <div>
                             <h3 className="font-heading text-xl uppercase tracking-wider group-hover:text-black transition-colors">
